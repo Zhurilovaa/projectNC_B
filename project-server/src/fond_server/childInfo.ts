@@ -12,6 +12,6 @@ export interface Child{
     name: string,
     patronym: string,
     surname: string,
-    needSym: number,
-    donatSym: number,
+    needSum: number,
+    donatSum: number,
 }

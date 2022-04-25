@@ -1,6 +1,10 @@
 import { Body, Controller, Get, Param, Put } from '@nestjs/common';
+
 import { UpdateChildInfoDTO } from 'src/basechild/dto/update-childinfo.dto';
+
 import { childlist } from './childbase';
+
+
 import { Child } from './childInfo';
 
 @Controller('fond-server')
@@ -26,13 +30,15 @@ export class FondServerController {
     @Put()
     donatPlus(@Body() updateChildInfoDTO: UpdateChildInfoDTO){
         let idCh: number = updateChildInfoDTO.idChild;
+
         //предположим, что проверка на существование такого id в базе происходит в сервисе на фронте
         for(let i=0; i<this.childList.length; i++){
             if(this.childList[i].id === idCh){
-                this.childList[i].donatSym += updateChildInfoDTO.donateSym;
+                this.childList[i].donatSum += updateChildInfoDTO.donateSum;
+                return this.childList[i];
             }            
         }
-        return this.childList;
+        //this.childList[0].donatSum +=1;        
     }
     
 }
