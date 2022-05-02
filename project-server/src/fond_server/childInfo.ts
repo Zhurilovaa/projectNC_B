@@ -9,9 +9,10 @@
 // что-то ещё??
 export interface Child{
     id: number, //возможно лучше string
-    name: string,
+    name: string,    
     patronym: string,
     surname: string,
+    gender: string,
     needSum: number,
     donatSum: number,
 }
