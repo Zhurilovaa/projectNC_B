@@ -45,6 +45,6 @@ export class BasechildController {
     //ОБНОВЛЕНИЕ КАКОГО-ТО ЭЛЕМЕНТА!
     @Put(':id')
     updateEl(@Body() updateChildInfoDTO: UpdateChildInfoDTO, @Param('id') id: string){
-        return `nameChild: ${updateChildInfoDTO.idChild}, Sym:  ${updateChildInfoDTO.donateSum}`;
+        return `nameChild: ${id}, Sym:  ${updateChildInfoDTO.donateSum}`;
     }
 }
