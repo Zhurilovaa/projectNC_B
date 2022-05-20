@@ -12,6 +12,7 @@ export interface Child{
     name: string,    
     patronym: string,
     surname: string,
+    birthDate: string,
     gender: string,
     needSum: number,
     donatSum: number,
