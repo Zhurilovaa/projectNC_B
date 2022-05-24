@@ -10,6 +10,7 @@ export let childlist: Child[] = [
     gender: "girl",
     needSum: 9308407,
     donatSum: 8875000,
+    history: "История пока не добавлена...",
 },
 {
     id: 2,
@@ -20,6 +21,7 @@ export let childlist: Child[] = [
     gender: "boy",
     needSum: 7223978,
     donatSum: 5924901,
+    history: "История пока не добавлена...",
 },
 {
     id: 3,
@@ -30,6 +32,7 @@ export let childlist: Child[] = [
     gender: "girl",
     needSum: 520190,
     donatSum: 412955,
+    history: "История пока не добавлена...",
 },
 {
     id: 4,
@@ -40,6 +43,7 @@ export let childlist: Child[] = [
     gender: "boy",
     needSum: 1260711,
     donatSum: 902054,
+    history: "История пока не добавлена...",
 },
 {
     id: 5,
@@ -50,6 +54,7 @@ export let childlist: Child[] = [
     gender: "boy",
     needSum: 3153460,
     donatSum: 2223351,
+    history: "История пока не добавлена...",
 }
 ];
 

@@ -16,4 +16,5 @@ export interface Child{
     gender: string,
     needSum: number,
     donatSum: number,
+    history: string,
 }
