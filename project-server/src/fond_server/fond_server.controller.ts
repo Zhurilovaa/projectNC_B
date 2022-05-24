@@ -16,8 +16,10 @@ export class FondServerController {
     }
 
     @Get(':id')
-    getChildId(@Param('id') id: string): string{
-        return 'getChild ' + id;
+    getChildId(@Param('id') id: string): Child[]{
+        let childId = this.childList.findIndex((value)=>value.id=== +id);
+        return [this.childList[childId]];
+        //return 'getChild ' + id;
     }
 
     //доп.метод - добавление нового ребёнка в "базу данных"
