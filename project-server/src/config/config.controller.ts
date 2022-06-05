@@ -20,14 +20,8 @@ export class ConfigController {
     public newsAboutFond: News[] = newsFond;
 
     @Get(':idContent')
-    getContent(@Param('idContent') id: string, @Body() body?: Admin){
+    getContent(@Param('idContent') id: string){
         switch(id){
-            case 'login':
-                if((this.loginAdmin.login === body.login)&&(this.loginAdmin.password === body.password))
-                {
-                    return true;
-                }
-                return false;
             case 'contact':
                 return this.contacts;
             case 'news':
@@ -38,9 +32,23 @@ export class ConfigController {
     }
 
     @Post()
-    addNews(@Body() body: News){
-        this.newsAboutFond.push(body);
-        return this.newsAboutFond;
+    login( @Body() body: Admin){
+        if((this.loginAdmin.login === body.login)&&(this.loginAdmin.password === body.password))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    @Post(':idContent')
+    addNews(@Param('idContent') id: string, @Body() body: News){
+        switch(id){
+            case 'news':
+                this.newsAboutFond.push(body);
+                return this.newsAboutFond;
+            default:
+                return 'Error content';
+        }        
     }
 
     @Put(':id')
@@ -56,6 +64,4 @@ export class ConfigController {
                 return 'Error edith content';
         }         
     }
-
-
 }
