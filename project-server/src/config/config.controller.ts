@@ -3,7 +3,7 @@ import { Get, Param, Post, Body, Put } from '@nestjs/common';
 
 import { News, newsFond } from './config-news.base';
 
-import { contactsContent } from './config-contact.base';
+import { Contacts, contactsContent } from './config-contact.base';
 
 import { Admin } from './config-admin.base';
 
@@ -15,7 +15,7 @@ export class ConfigController {
         password: 'pass',
     };
  
-    public contacts = contactsContent;
+    public contacts: Contacts[] = contactsContent;
 
     public newsAboutFond: News[] = newsFond;
 
