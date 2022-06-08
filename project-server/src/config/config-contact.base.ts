@@ -1,6 +1,6 @@
 //все данные для вкладки "контакты"
 
-export interface ActualAdress{
+export interface ActualAddress{
     postalCode: number,
     city: string,
     street: string,
@@ -12,7 +12,7 @@ export interface BusinessAddress{
     city: string,
     street: string,
     build: number,
-    office:  number,
+    office?:  number,
 }
 
 export interface Requisites{
@@ -28,7 +28,7 @@ export interface Contacts{
     telephone: string,
     fax: string,
     email: string,
-    actualAddress: ActualAdress,
+    actualAddress: ActualAddress,
     businessAddress:BusinessAddress,
     requisites: Requisites,        
 }
@@ -37,7 +37,7 @@ export let contactsContent: Contacts[] = [
     {
         nameOfTheOrganization: 'Некоммерческая организация "Нижегородский онкологический научный центр"',
         shortName: 'Фонд "НОНЦ"',
-        telephone: '(831)4155775',
+        telephone: '(831) 415 57 75',
         fax: '(831) 469 07 36',
         email: 'fondnonc@mail.ru',
         actualAddress: {
@@ -52,7 +52,6 @@ export let contactsContent: Contacts[] = [
             city: 'Н.Новгород',
             street: 'Тверская',
             build: 20,
-            office:  9,
         },
         requisites: {
             OGRN: 1045207474663,

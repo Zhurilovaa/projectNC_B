@@ -55,7 +55,8 @@ export class ConfigController {
     edithContent(@Param('id') id:string, @Body() body: any){
         switch(id){
             case 'contact':
-                this.contacts = body;
+                //изменить формат сделать проход по свойствам структурой for in
+                this.contacts[0] = body;
                 return this.contacts;
             case 'news':
                 this.newsAboutFond = body;
