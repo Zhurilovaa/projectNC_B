@@ -25,6 +25,9 @@ export class ConfigController {
             case 'contact':
                 return this.contacts;
             case 'news':
+                this.newsAboutFond = this.newsAboutFond.sort((a,b)=>{
+                    return new Date(b.dateOfPublication).getTime() - new Date(a.dateOfPublication).getTime();
+                });
                 return this.newsAboutFond;
             default:
                 return 'Error content';
@@ -45,6 +48,9 @@ export class ConfigController {
         switch(id){
             case 'news':
                 this.newsAboutFond.push(body);
+                this.newsAboutFond = this.newsAboutFond.sort((a,b)=>{
+                    return new Date(b.dateOfPublication).getTime() - new Date(a.dateOfPublication).getTime();
+                });
                 return this.newsAboutFond;
             default:
                 return 'Error content';
@@ -60,6 +66,9 @@ export class ConfigController {
                 return this.contacts;
             case 'news':
                 this.newsAboutFond = body;
+                this.newsAboutFond = this.newsAboutFond.sort((a,b)=>{
+                    return new Date(b.dateOfPublication).getTime() - new Date(a.dateOfPublication).getTime();
+                });
                 return this.newsAboutFond;
             default:
                 return 'Error edith content';
