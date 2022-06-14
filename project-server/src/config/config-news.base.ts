@@ -1,4 +1,5 @@
 export interface News{
+    id?: string,
     dateOfPublication: Date,
     text: string,
 }

@@ -58,17 +58,16 @@ export class ConfigController {
     }
 
     @Put(':id')
-    edithContent(@Param('id') id:string, @Body() body: any){
+    edithContent(@Param('id') id:string, @Body() body){
         switch(id){
             case 'contact':
                 //изменить формат сделать проход по свойствам структурой for in
                 this.contacts[0] = body;
                 return this.contacts;
             case 'news':
-                this.newsAboutFond = body;
-                this.newsAboutFond = this.newsAboutFond.sort((a,b)=>{
-                    return new Date(b.dateOfPublication).getTime() - new Date(a.dateOfPublication).getTime();
-                });
+                body.dateOfPublication = new Date(body.dateOfPublication);
+                let index = this.newsAboutFond.findIndex((value)=> value.dateOfPublication.getTime()===body.dateOfPublication.getTime())
+                this.newsAboutFond[index].text = body.text;
                 return this.newsAboutFond;
             default:
                 return 'Error edith content';
