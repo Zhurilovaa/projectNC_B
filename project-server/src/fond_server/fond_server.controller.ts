@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Patch, Put, Post} from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch, Put, Post, HttpException, HttpStatus} from '@nestjs/common';
 
 import { UpdateChildInfoDTO } from 'src/basechild/dto/update-childinfo.dto';
 
@@ -18,8 +18,16 @@ export class FondServerController {
     @Get(':id')
     getChildId(@Param('id') id: string): Child[]{
         let childId = this.childList.findIndex((value)=>value.id=== +id);
-        return [this.childList[childId]];
-        //return 'getChild ' + id;
+        if ((childId>-1)&&(childId<this.childList.length) )
+        {
+            return [this.childList[childId]];
+        }
+        else{
+            throw new HttpException({
+                status: HttpStatus.FORBIDDEN,
+                error: 'There is no data registered under such an index',
+              }, HttpStatus.FORBIDDEN);
+        }
     }
 
     //доп.метод - добавление нового ребёнка в "базу данных"

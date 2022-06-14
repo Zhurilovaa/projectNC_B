@@ -1,4 +1,4 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Delete } from '@nestjs/common';
 import { Get, Param, Post, Body, Put } from '@nestjs/common';
 
 import { News, newsFond } from './config-news.base';
@@ -47,6 +47,7 @@ export class ConfigController {
     addNews(@Param('idContent') id: string, @Body() body: News){
         switch(id){
             case 'news':
+                body.id = (this.newsAboutFond.length+1).toString();
                 this.newsAboutFond.push(body);
                 this.newsAboutFond = this.newsAboutFond.sort((a,b)=>{
                     return new Date(b.dateOfPublication).getTime() - new Date(a.dateOfPublication).getTime();
@@ -61,16 +62,23 @@ export class ConfigController {
     edithContent(@Param('id') id:string, @Body() body){
         switch(id){
             case 'contact':
-                //изменить формат сделать проход по свойствам структурой for in
                 this.contacts[0] = body;
                 return this.contacts;
             case 'news':
-                body.dateOfPublication = new Date(body.dateOfPublication);
-                let index = this.newsAboutFond.findIndex((value)=> value.dateOfPublication.getTime()===body.dateOfPublication.getTime())
-                this.newsAboutFond[index].text = body.text;
+                this.newsAboutFond = body;
                 return this.newsAboutFond;
             default:
                 return 'Error edith content';
         }         
+    }
+
+    @Delete(':id')
+    deleteNewsById(@Param('id') id:string,){
+        const index: number = this.newsAboutFond.findIndex( (value) => value.id === id)
+        if( (index > -1) && (index < this.newsAboutFond.length)){
+            this.newsAboutFond.splice(index,1);
+            return this.newsAboutFond;
+        }
+        else return 'Error delete content';        
     }
 }
