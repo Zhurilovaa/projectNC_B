@@ -4,7 +4,6 @@ export interface News{
     text: string,
 }
 
-
 export let newsFond = [
     {
         id: '1',

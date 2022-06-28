@@ -30,7 +30,6 @@ export class FondServerController {
         }
     }
 
-    //доп.метод - добавление нового ребёнка в "базу данных"
     @Post()
     addChild(@Body() body: Child){
         this.childList.push(body);
@@ -39,14 +38,12 @@ export class FondServerController {
 
     @Put(':id')
     donatPlus(@Param('id') id:string, @Body() body: UpdateChildInfoDTO){
-        //находим ребенка в массиве по индексу
         let childToDonateIndex: number = -1;
         for(let i =0; i<this.childList.length; i++){
             if((+id) === this.childList[i].id){
                 childToDonateIndex = i;
             }
         }
-        //изменяем
         if(childToDonateIndex !== -1){
             this.childList[childToDonateIndex].donatSum += body.donateSum;
             return this.childList; 
